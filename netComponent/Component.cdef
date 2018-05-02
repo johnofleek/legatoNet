@@ -1,0 +1,32 @@
+/*
+ * net
+ * netComponent Component.cdef file 
+ */
+
+
+sources: 
+{
+    main.c
+    
+}
+
+requires:
+{
+    api:
+    {
+    }
+}
+
+provides:
+{
+    api:
+    {
+        net.api
+    }
+}
+
+
+cxxflags:
+{
+
+}

@@ -1,0 +1,39 @@
+
+executables:
+{
+    net = ( netComponent )
+}
+
+processes:
+{
+    run:
+    {
+        ( net )
+    }
+}
+
+requires:
+{
+    device:
+    {
+    }
+    file:
+    {
+    }
+}
+
+bindings:
+{
+
+}
+
+extern:
+{
+	net.netComponent.net
+}
+
+
+start: auto
+
+sandboxed: false
+

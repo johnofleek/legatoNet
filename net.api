@@ -1,0 +1,32 @@
+DEFINE MAX_URL = 			(2000);
+DEFINE MAX_STRLEN_IP = 	    (64);
+
+/*
+ * An attempt to replicate getaddrinfo() due to sandbox issues calling it from an app
+ * int getaddrinfo(const char * host, const char * serv, const struct addrinfo * hint, struct addrinfo ** res)
+ *
+ *  For user apps  - most likely prefixed with net_ as in net_getAddrInfo
+ *
+ * Takes url (host) and if available returns first ip address as a string of form XXX.XXX.XXX.XXX
+ *
+ * Failure to find an ipAddressAsString address function will return an empty string
+ *
+ * Hints often look like this:
+ *  hints.ai_family = AF_INET;
+ *  hints.ai_socktype = SOCK_STREAM;
+ *  hints.ai_protocol = IPPROTO_TCP;
+ *
+ *  if(hints_ai_family) is AF_INET this causes the app to look for IPv4
+ *  if(hints_ai_family) is AF_INET6 this may cause the app to look for IPv6 *** untested
+ */
+
+FUNCTION getAddrInfo
+(
+	int32	hints_ai_family						IN,
+    int32	hints_ai_socktype 					IN,
+    int32   hints_ai_protocol 					IN,
+    string  host[MAX_URL] 						IN,	// URL like "wwww.bbc.co.uk"
+    string  ipAddressAsString[MAX_STRLEN_IP]	OUT	// for IPv4 expect something like "213.146.173.182"
+);
+
+
